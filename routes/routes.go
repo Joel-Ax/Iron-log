@@ -5,7 +5,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func SetupRoutes(app *fiber.App, userController *controllers.UserController) {
+func SetupRoutes(app *fiber.App, userController *controllers.UserController, exerciseLibraryController *controllers.ExerciseLibraryController) {
 	api := app.Group("/api")
 
 	api.Post("/users", userController.CreateUser)

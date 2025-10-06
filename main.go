@@ -39,12 +39,21 @@ func main() {
 		log.Fatal("could not migrate db")
 	}
 
+	err = models.MigrateExerciseLibrary(db)
+	if err != nil {
+		log.Fatal("could not migrate db")
+	}
+
 	userRepo := repositories.NewUserRepository(db)
 	userService := services.NewUserService(userRepo)
 	userController := controllers.NewUserController(userService)
 
+	exerciseLibraryRepo := repositories.NewExerciseLibraryRepository(db)
+	exerciseLibraryService := services.NewExerciseLibraryService(exerciseLibraryRepo)
+	exerciseLibraryController := controllers.NewExerciseLibraryController(exerciseLibraryService)
+
 	app := fiber.New()
-	routes.SetupRoutes(app, userController)
+	routes.SetupRoutes(app, userController, exerciseLibraryController)
 	app.Listen(":8080")
 
 }

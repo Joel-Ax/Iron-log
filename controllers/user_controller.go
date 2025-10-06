@@ -40,7 +40,7 @@ func (c *UserController) GetUser(ctx *fiber.Ctx) error {
 	User, err := c.service.GetAllUsers()
 	if err != nil {
 		return ctx.Status(http.StatusBadRequest).JSON(fiber.Map{
-			"message": "could not get User",
+			"message": "could not get user",
 		})
 	}
 
