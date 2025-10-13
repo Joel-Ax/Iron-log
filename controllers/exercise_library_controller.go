@@ -65,7 +65,7 @@ func (c *ExerciseLibraryController) GetExerciseID(ctx *fiber.Ctx) error {
 	})
 }
 
-func (c ExerciseLibraryController) DeleteUser(ctx *fiber.Ctx) error {
+func (c ExerciseLibraryController) DeleteExercise(ctx *fiber.Ctx) error {
 	id := ctx.Params("id")
 
 	if err := c.service.DeleteExercise(id); err != nil {
