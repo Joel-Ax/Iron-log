@@ -49,7 +49,7 @@ func (c *ExerciseSetsController) GetExerciseSet(ctx *fiber.Ctx) error {
 	})
 }
 
-func (c *ExerciseSetsController) GetExerciseSetID(ctx *fiber.Ctx) error {
+func (c *ExerciseSetsController) GetExerciseSetByID(ctx *fiber.Ctx) error {
 	id := ctx.Params("id")
 
 	exerciseSet, err := c.service.GetExerciseSetID(id)

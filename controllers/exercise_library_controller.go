@@ -49,7 +49,7 @@ func (c *ExerciseLibraryController) GetExercise(ctx *fiber.Ctx) error {
 	})
 }
 
-func (c *ExerciseLibraryController) GetExerciseID(ctx *fiber.Ctx) error {
+func (c *ExerciseLibraryController) GetExerciseByID(ctx *fiber.Ctx) error {
 	id := ctx.Params("id")
 
 	exercise, err := c.service.GetExerciseID(id)

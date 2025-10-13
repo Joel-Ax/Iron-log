@@ -13,19 +13,19 @@ func SetupRoutes(app *fiber.App, userController *controllers.UserController, exe
 	api.Get("/users", userController.GetUser)
 	api.Delete("/users/:id", userController.DeleteUser)
 
-	api.Post("/workouts")
-	api.Get("/workouts/:id")
-	api.Get("/workouts")
-	api.Delete("/workouts/:id")
+	api.Post("/workouts", workoutController.CreateWorkout)
+	api.Get("/workouts/:id", workoutController.GetWorkoutById)
+	api.Get("/workouts", workoutController.GetWorkout)
+	api.Delete("/workouts/:id", workoutController.DeleteWorkout)
 
-	api.Post("/exercise-library")
-	api.Get("/exercise-library/:id")
-	api.Get("/exercise-library")
-	api.Delete("/exercise-library/:id")
+	api.Post("/exercise-library", exerciseLibraryController.CreateExercise)
+	api.Get("/exercise-library/:id", exerciseLibraryController.GetExerciseByID)
+	api.Get("/exercise-library", exerciseLibraryController.GetExercise)
+	api.Delete("/exercise-library/:id", exerciseLibraryController.DeleteExercise)
 
-	api.Post("/exercise-sets")
-	api.Get("/exercise-sets/:id")
-	api.Get("/exercise-sets")
-	api.Delete("/exercise-sets/:id")
+	api.Post("/exercise-sets", exerciseSetsController.CreateExercise)
+	api.Get("/exercise-sets/:id", exerciseSetsController.GetExerciseSetByID)
+	api.Get("/exercise-sets", exerciseSetsController.GetExerciseSet)
+	api.Delete("/exercise-sets/:id", exerciseSetsController.DeleteExerciseSet)
 
 }
