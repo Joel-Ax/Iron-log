@@ -4,6 +4,7 @@ go 1.22.2
 
 require (
 	github.com/joho/godotenv v1.5.1
+	golang.org/x/crypto v0.31.0
 	gorm.io/gorm v1.31.0
 )
 
@@ -22,7 +23,6 @@ require (
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.51.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
-	golang.org/x/crypto v0.31.0 // indirect
 	golang.org/x/sync v0.10.0 // indirect
 	golang.org/x/sys v0.28.0 // indirect
 )

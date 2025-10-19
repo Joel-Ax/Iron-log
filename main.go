@@ -47,6 +47,8 @@ func main() {
 	userRepo := repositories.NewUserRepository(db)
 	userService := services.NewUserService(userRepo)
 	userController := controllers.NewUserController(userService)
+	authService := services.NewAuthService(userRepo)
+	authController := controllers.NewAuthController(authService)
 
 	exerciseLibraryRepo := repositories.NewExerciseLibraryRepository(db)
 	exerciseLibraryService := services.NewExerciseLibraryService(exerciseLibraryRepo)
@@ -61,7 +63,7 @@ func main() {
 	workoutController := controllers.NewWorkoutController(workoutService)
 
 	app := fiber.New()
-	routes.SetupRoutes(app, userController, exerciseLibraryController, exerciseSetsController, workoutController)
+	routes.SetupRoutes(app, userController, exerciseLibraryController, exerciseSetsController, workoutController, authController)
 	app.Listen(":8080")
 
 }

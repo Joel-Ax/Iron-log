@@ -5,8 +5,11 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func SetupRoutes(app *fiber.App, userController *controllers.UserController, exerciseLibraryController *controllers.ExerciseLibraryController, exerciseSetsController *controllers.ExerciseSetsController, workoutController *controllers.WorkoutController) {
+func SetupRoutes(app *fiber.App, userController *controllers.UserController, exerciseLibraryController *controllers.ExerciseLibraryController, exerciseSetsController *controllers.ExerciseSetsController, workoutController *controllers.WorkoutController, authcontroller *controllers.AuthController) {
 	api := app.Group("/api")
+
+	api.Post("/auth/register", authcontroller.Register)
+	api.Post("/auth/login", authcontroller.Login)
 
 	api.Post("/users", userController.CreateUser)
 	api.Get("/users/:id", userController.GetUserByID)
