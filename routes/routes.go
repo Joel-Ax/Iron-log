@@ -11,6 +11,9 @@ func SetupRoutes(app *fiber.App, userController *controllers.UserController, exe
 	api.Post("/auth/register", authcontroller.Register)
 	api.Post("/auth/login", authcontroller.Login)
 
+	api.Get("/auth/google", authcontroller.GoogleLogin)
+	api.Get("/auth/google/callback", authcontroller.GoogleCallback)
+
 	api.Post("/users", userController.CreateUser)
 	api.Get("/users/:id", userController.GetUserByID)
 	api.Get("/users", userController.GetUser)

@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/Joel-Ax/go-fiber-postgres/config"
 	"github.com/Joel-Ax/go-fiber-postgres/controllers"
 	"github.com/Joel-Ax/go-fiber-postgres/models"
 	"github.com/Joel-Ax/go-fiber-postgres/repositories"
@@ -20,7 +21,9 @@ func main() {
 		log.Fatal(err)
 	}
 
-	config := &storage.Config{
+	config.InitOAuthConfig()
+
+	DBconfig := &storage.DBConfig{
 		Host:     os.Getenv("DB_HOST"),
 		Port:     os.Getenv("DB_PORT"),
 		User:     os.Getenv("DB_USER"),
@@ -29,7 +32,7 @@ func main() {
 		SSLMode:  os.Getenv("DB_SSLMODE"),
 	}
 
-	db, err := storage.NewConnection(config)
+	db, err := storage.NewConnection(DBconfig)
 	if err != nil {
 		log.Fatal("Could not load the database")
 	}

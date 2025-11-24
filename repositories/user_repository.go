@@ -11,6 +11,8 @@ type UserRepository interface {
 	FindByID(id string) (*models.User, error)
 	Delete(id string) error
 	FindByEmail(email string) (*models.User, error)
+	FindByGoogleID(googleID string) (*models.User, error)
+	Update(user *models.User) error
 }
 
 type userRepository struct {
@@ -45,4 +47,14 @@ func (r *userRepository) FindByEmail(email string) (*models.User, error) {
 	var user models.User
 	err := r.db.Where("email = ?", email).First(&user).Error
 	return &user, err
+}
+
+func (r *userRepository) FindByGoogleID(googleID string) (*models.User, error) {
+	var user models.User
+	err := r.db.Where("google_id = ?", googleID).First(&user).Error
+	return &user, err
+}
+
+func (r *userRepository) Update(user *models.User) error {
+	return r.db.Save(user).Error
 }
